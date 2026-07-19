@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Administrador | RutaPet Express</title>
+<style>
+body{font-family:Arial;background:#f4fbff;color:#17324d;margin:0;padding:28px}.wrap{max-width:800px;margin:auto}.card{background:#fff;padding:28px;border-radius:22px;box-shadow:0 18px 45px rgba(19,73,102,.13);border:1px solid #d9eaf2}
+input,textarea,select,button{width:100%;padding:13px;margin:7px 0;border-radius:11px;border:1px solid #cddfe8;font-size:1rem;box-sizing:border-box}button{background:#1677a8;color:#fff;border:0;font-weight:900;cursor:pointer}
+button.secondary{background:#607489}button.danger{background:#b83e32}.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}.message{padding:12px;border-radius:10px;margin-top:10px;display:none}.ok{background:#e2f7e9;color:#176b39}.bad{background:#fde7e5;color:#9c2e25}
+small{color:#607489}@media(max-width:600px){.row{grid-template-columns:1fr}}
+</style>
+</head>
+<body><div class="wrap"><div class="card">
+<h1>Administrador RutaPet Express</h1>
+<p>Crea, consulta, modifica o elimina un envío. La contraseña es la que configurarás en Netlify.</p>
+<label>Contraseña administrativa</label><input id="password" type="password" autocomplete="current-password" placeholder="Contraseña de Netlify">
+<hr style="border:0;border-top:1px solid #d9eaf2;margin:20px 0">
+<label>Número de guía</label><input id="guia" placeholder="RP000001">
+<div class="row"><button class="secondary" onclick="cargar()">Cargar guía</button><button onclick="nuevaGuia()">Limpiar formulario</button></div>
+<label>Estado</label><select id="estado"><option>Recogida confirmada</option><option>Preparando salida</option><option>En tránsito</option><option>En ruta de entrega</option><option>Entregado</option><option>Servicio pausado</option></select>
+<label>Ubicación actual</label><input id="ubicacion" placeholder="Santiago, República Dominicana">
+<div class="row"><div><label>Última actualización</label><input id="actualizacion" placeholder="19/07/2026"></div><div><label>Entrega estimada</label><input id="entrega" placeholder="20/07/2026"></div></div>
+<label>Observaciones</label><textarea id="observaciones" rows="4" placeholder="La mascota viaja hacia su destino."></textarea>
+<div class="row"><button onclick="guardar()">Guardar envío</button><button class="danger" onclick="eliminar()">Eliminar envío</button></div>
+<div id="mensaje" class="message"></div><p><a href="/">← Volver al rastreo público</a></p>
+</div></div>
+<script>
+const $=id=>document.getElementById(id);
+function code(){return $("guia").value.trim().replace(/\s+/g,"").toUpperCase();}
+function show(text,ok=true){const m=$("mensaje");m.textContent=text;m.className="message "+(ok?"ok":"bad");m.style.display="block";}
+function auth(){return {"content-type":"application/json","x-admin-key":$("password").value};}
+function nuevaGuia(){["guia","ubicacion","actualizacion","entrega","observaciones"].forEach(id=>$(id).value="");$("estado").value="Recogida confirmada";$("mensaje").style.display="none";}
+async function cargar(){
+ try{
+  const r=await fetch("/api/envio?guia="+encodeURIComponent(code()),{cache:"no-store"});
+  const d=await r.json();if(!r.ok)throw new Error(d.error||"No encontrada");
+  const e=d.envio;$("estado").value=e.estado||"Recogida confirmada";$("ubicacion").value=e.ubicacion||"";$("actualizacion").value=e.actualizacion||"";$("entrega").value=e.entrega||"";$("observaciones").value=e.observaciones||"";show("Guía cargada.");
+ }catch(e){show(e.message,false);}
+}
+async function guardar(){
+ const guia=code();if(!guia)return show("Escribe el número de guía.",false);
+ const envio={guia,estado:$("estado").value,ubicacion:$("ubicacion").value,actualizacion:$("actualizacion").value,entrega:$("entrega").value,observaciones:$("observaciones").value};
+ try{
+  const r=await fetch("/api/envio",{method:"POST",headers:auth(),body:JSON.stringify(envio)});
+  const d=await r.json();if(!r.ok)throw new Error(d.error||"No se pudo guardar");show("Envío guardado correctamente: "+guia);
+ }catch(e){show(e.message,false);}
+}
+async function eliminar(){
+ const guia=code();if(!guia)return show("Escribe la guía que deseas eliminar.",false);
+ if(!confirm("¿Eliminar definitivamente "+guia+"?"))return;
+ try{
+  const r=await fetch("/api/envio?guia="+encodeURIComponent(guia),{method:"DELETE",headers:auth()});
+  const d=await r.json();if(!r.ok)throw new Error(d.error||"No se pudo eliminar");show("Guía eliminada: "+guia);nuevaGuia();
+ }catch(e){show(e.message,false);}
+}
+</script></body></html>

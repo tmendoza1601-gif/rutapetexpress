@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="RutaPet Express - Transporte y seguimiento seguro de mascotas en República Dominicana.">
+<title>RutaPet Express | Envío seguro de mascotas</title>
+<style>
+:root{--bg:#f4fbff;--card:#fff;--text:#17324d;--muted:#607489;--primary:#1677a8;--dark:#0d5377;--soft:#dff3fb;--green:#25D366;--border:#d9eaf2;--shadow:0 18px 45px rgba(19,73,102,.13)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text);line-height:1.55}
+a{text-decoration:none;color:inherit}.container{width:min(1120px,92%);margin:auto}
+header{position:sticky;top:0;z-index:30;background:rgba(244,251,255,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+nav{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:18px}.brand{display:flex;align-items:center;gap:11px;font-size:1.22rem;font-weight:900}
+.logo{width:45px;height:45px;border-radius:15px;display:grid;place-items:center;background:linear-gradient(135deg,var(--primary),#49afd6);color:#fff;font-size:1.45rem;box-shadow:var(--shadow)}
+.links{display:flex;gap:23px;font-weight:800;color:var(--muted)}.btn,.nav-btn{display:inline-flex;align-items:center;justify-content:center;padding:13px 20px;border-radius:999px;font-weight:900;border:0;cursor:pointer}
+.nav-btn,.btn-primary{background:var(--primary);color:#fff}.btn-secondary{background:#fff;border:1px solid var(--border);color:var(--dark)}
+.hero{padding:78px 0 54px;display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:48px}.eyebrow{display:inline-block;background:var(--soft);color:var(--dark);padding:8px 14px;border-radius:999px;font-weight:900;font-size:.88rem}
+h1{font-size:clamp(2.5rem,5vw,4.8rem);line-height:1.02;margin:18px 0}.hero p{font-size:1.13rem;color:var(--muted);max-width:630px}.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.hero-card{min-height:445px;border-radius:36px;background:linear-gradient(145deg,#ccecf8,#fff3d6);position:relative;overflow:hidden;display:grid;place-items:center;box-shadow:var(--shadow)}
+.hero-icon{font-size:9rem}.bubble{position:absolute;background:#fff;padding:13px 17px;border-radius:18px;box-shadow:var(--shadow);font-weight:900}.b1{left:22px;top:28px}.b2{right:20px;bottom:28px}
+section{padding:72px 0}.section-head{text-align:center;max-width:760px;margin:0 auto 36px}.section-head h2{font-size:clamp(2rem,4vw,3rem);margin:0 0 10px}.section-head p{margin:0;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}.card{background:#fff;border:1px solid var(--border);border-radius:24px;padding:27px;box-shadow:var(--shadow)}.card-icon{font-size:2.7rem}.card h3{margin:14px 0 7px}.card p{color:var(--muted);margin:0}
+.tracking-box{background:linear-gradient(135deg,var(--primary),#2ba8c8);color:#fff;border-radius:32px;padding:46px;box-shadow:var(--shadow)}.tracking-box form{max-width:790px;margin:auto}.tracking-row{display:flex;gap:10px;flex-wrap:wrap}
+.tracking-row input{flex:1;min-width:240px;padding:16px;border:0;border-radius:14px;font-size:1rem}.tracking-row button{border:0;border-radius:14px;padding:16px 25px;background:#fff;color:var(--dark);font-weight:900;cursor:pointer}
+.result{display:none;margin-top:24px;background:#fff;color:var(--text);border-radius:20px;padding:25px;text-align:left}.info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px}.info{background:#f4fbff;padding:16px;border-radius:14px;border:1px solid var(--border)}
+.cta{background:linear-gradient(135deg,#fff4d6,#dff3fb);border:1px solid var(--border);border-radius:30px;padding:46px;text-align:center;box-shadow:var(--shadow)}.cta h2{font-size:clamp(2rem,4vw,3.1rem);margin:0 0 10px}.cta p{color:var(--muted);margin:0 0 24px}
+footer{padding:38px 0;text-align:center;color:var(--muted)}.whatsapp{position:fixed;right:18px;bottom:18px;width:60px;height:60px;border-radius:50%;background:var(--green);color:#fff;display:grid;place-items:center;font-size:1.7rem;box-shadow:0 12px 28px rgba(0,0,0,.23)}
+.admin-link{font-size:.82rem;color:var(--muted);display:inline-block;margin-top:8px}.loader{opacity:.8}
+@media(max-width:850px){.links{display:none}.hero{grid-template-columns:1fr;padding-top:46px}.hero-card{min-height:340px}.grid{grid-template-columns:1fr}}
+@media(max-width:560px){nav .nav-btn{display:none}.hero-card{min-height:300px}.hero-icon{font-size:6.8rem}.tracking-box,.cta{padding:34px 22px}}
+</style>
+</head>
+<body>
+<header><div class="container"><nav>
+<a class="brand" href="#inicio"><span class="logo">🐾</span>RutaPet Express</a>
+<div class="links"><a href="#servicios">Servicios</a><a href="#rastreo">Rastrear envío</a><a href="#contacto">Contacto</a></div>
+<a class="nav-btn" target="_blank" href="https://wa.me/18297215210?text=Hola%2C%20quiero%20cotizar%20el%20env%C3%ADo%20de%20una%20mascota">Cotizar</a>
+</nav></div></header>
+
+<main>
+<section id="inicio" class="container hero">
+<div><span class="eyebrow">Transporte responsable de mascotas</span><h1>Tu mascota viaja segura, cuidada y acompañada.</h1>
+<p>Coordinamos el traslado de mascotas con información y seguimiento durante todo el recorrido.</p>
+<div class="hero-actions"><a class="btn btn-primary" href="#rastreo">Rastrear envío</a><a class="btn btn-secondary" target="_blank" href="https://wa.me/18297215210?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20el%20env%C3%ADo%20de%20mi%20mascota">Solicitar información</a></div></div>
+<div class="hero-card"><div class="bubble b1">Cuidado durante el viaje ✓</div><div class="hero-icon">🐶🚐</div><div class="bubble b2">Seguimiento en línea 📍</div></div>
+</section>
+
+<section id="servicios"><div class="container"><div class="section-head"><h2>Transporte de mascotas</h2><p>Recogida, traslado, comunicación y entrega coordinada.</p></div>
+<div class="grid">
+<article class="card"><div class="card-icon">🚐</div><h3>Traslado terrestre</h3><p>Servicio coordinado entre ciudades y provincias.</p></article>
+<article class="card"><div class="card-icon">🩺</div><h3>Orientación previa</h3><p>Información sobre preparación, documentos y transportadora.</p></article>
+<article class="card"><div class="card-icon">📲</div><h3>Seguimiento real</h3><p>El estado actualizado estará disponible desde cualquier dispositivo.</p></article>
+</div></div></section>
+
+<section id="rastreo"><div class="container"><div class="section-head"><h2>Rastrea el viaje de tu mascota</h2><p>Introduce la guía entregada por RutaPet Express.</p></div>
+<div class="tracking-box"><form id="trackingForm"><label for="tracking" style="display:block;font-weight:900;margin-bottom:10px">Número de guía</label>
+<div class="tracking-row"><input id="tracking" required autocomplete="off" placeholder="Ejemplo: RP000001"><button id="trackBtn" type="submit">Consultar estado</button></div></form>
+<div id="trackingResult" class="result"></div></div></div></section>
+
+<section id="contacto"><div class="container"><div class="cta"><h2>¿Necesitas enviar una mascota?</h2><p>Envíanos origen, destino, tipo de mascota y fecha aproximada.</p>
+<a class="btn btn-primary" target="_blank" href="https://wa.me/18297215210?text=Hola%2C%20quiero%20cotizar%20el%20env%C3%ADo%20de%20una%20mascota">Hablar por WhatsApp</a></div></div></section>
+</main>
+
+<footer><div class="container">© 2026 RutaPet Express · WhatsApp: 829-721-5210<br><a class="admin-link" href="/admin.html">Acceso administrativo</a></div></footer>
+<a class="whatsapp" target="_blank" href="https://wa.me/18297215210?text=Hola%2C%20quiero%20cotizar%20el%20env%C3%ADo%20de%20una%20mascota">✆</a>
+
+<script>
+const form=document.getElementById("trackingForm");
+const result=document.getElementById("trackingResult");
+const button=document.getElementById("trackBtn");
+
+function safe(value){return String(value ?? "").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]));}
+
+form.addEventListener("submit",async(e)=>{
+ e.preventDefault();
+ const code=document.getElementById("tracking").value.trim().replace(/\s+/g,"").toUpperCase();
+ result.style.display="block";
+ result.innerHTML='<div class="loader">Consultando el envío...</div>';
+ button.disabled=true;
+ try{
+   const response=await fetch("/api/envio?guia="+encodeURIComponent(code),{cache:"no-store"});
+   const data=await response.json();
+   if(!response.ok) throw new Error(data.error||"No se pudo consultar.");
+   const envio=data.envio;
+   result.innerHTML=`
+   <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:16px">
+     <div><small style="color:#607489;font-weight:800">NÚMERO DE GUÍA</small><h3 style="margin:3px 0;font-size:1.5rem">${safe(code)}</h3></div>
+     <span style="background:#dff3fb;color:#0d5377;padding:9px 13px;border-radius:999px;font-weight:900">${safe(envio.estado)}</span>
+   </div>
+   <div class="info-grid">
+     <div class="info"><strong>📍 Ubicación actual</strong><div style="margin-top:5px;color:#607489">${safe(envio.ubicacion)}</div></div>
+     <div class="info"><strong>🕒 Última actualización</strong><div style="margin-top:5px;color:#607489">${safe(envio.actualizacion)}</div></div>
+     <div class="info"><strong>🚐 Entrega estimada</strong><div style="margin-top:5px;color:#607489">${safe(envio.entrega)}</div></div>
+   </div>
+   <div class="info" style="margin-top:14px"><strong>📝 Observaciones</strong><div style="margin-top:5px;color:#607489">${safe(envio.observaciones)}</div></div>`;
+ }catch(error){
+   result.innerHTML=`<div style="text-align:center"><div style="font-size:2rem">🔎</div><h3 style="color:#b83e32;margin:8px 0">No pudimos encontrar la guía</h3><p style="color:#607489;margin:0">${safe(error.message)}</p></div>`;
+ }finally{button.disabled=false;}
+});
+</script>
+</body>
+</html>
