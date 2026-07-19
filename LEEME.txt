@@ -1,0 +1,28 @@
+RUTAPET EXPRESS — RASTREO REAL PARA NETLIFY
+
+ARCHIVOS
+- public/index.html: página pública de rastreo
+- public/admin.html: panel para modificar los envíos
+- netlify/functions/envio.mjs: API segura
+- netlify.toml: configuración de Netlify
+- package.json: dependencia de Netlify Blobs
+
+PUBLICACIÓN RECOMENDADA
+Esta versión tiene Functions y dependencias. Publícala conectándola a GitHub/GitLab
+o usando Netlify CLI. No subas solamente la carpeta public, porque el rastreo no funcionará.
+
+CONFIGURACIÓN OBLIGATORIA EN NETLIFY
+1. Abre tu proyecto.
+2. Project configuration > Environment variables.
+3. Crea:
+   ADMIN_PASSWORD = una contraseña privada y difícil
+4. Vuelve a desplegar la página.
+
+USO
+- Rastreo público: https://TU-SITIO.netlify.app/
+- Administrador: https://TU-SITIO.netlify.app/admin.html
+- Las guías deben comenzar con RP, por ejemplo RP000001.
+- Primero crea la guía desde admin.html y luego pruébala en la página pública.
+
+SEGURIDAD
+No coloques ADMIN_PASSWORD dentro de index.html, admin.html ni netlify.toml.
